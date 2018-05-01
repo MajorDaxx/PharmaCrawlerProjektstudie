@@ -1,0 +1,28 @@
+/* Ich weiß was css ist*/
+.RequestParam {
+    background-color:  greenyellow;
+}
+.RequestParam{
+    margin-top: 3em;
+    padding: 1em;
+    /* border-color: green;*/
+    border-width: 5px;
+    border-style: solid;
+}
+
+.RequestParam {
+    background-color:  greenyellow;
+}
+.GOOD{
+    background-color: green;
+}
+.BAD{
+    background-color: red;
+}
+.product{
+    margin-top: 3cm;
+}
+.Product{
+    margin-top: 3cm;
+    margin-top: 3em;
+}

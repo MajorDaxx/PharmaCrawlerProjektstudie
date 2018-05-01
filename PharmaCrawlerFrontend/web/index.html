@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css" type="text/css"/>
+
+
+
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--AJAX nachziehen-->
+        <script>
+            $(document).ready(function () {
+                $('#somebutton').click(function () {
+                    $.get('GetUserServlet', function (responseText) {
+                        $('#somediv').text(responseText);
+                    });
+                });
+            });
+            $("#somebutton").click(function () {
+                $.ajax
+                        (
+                                {
+                                    url: 'GetUserServlet',
+                                    data: {name: 'abc'},
+                                    type: 'get',
+                                    cache: false,
+                                    success: function (data) {
+                                        alert(data);
+                                    },
+                                    error: function () {
+                                        alert('error');
+                                    }
+                                }
+                        );
+            }
+            );
+        </script>
+
+        <script type="text/javascript">
+            function addArtikel() {
+                //Hier ist eine schwachstelle für angriffe! Wenn zwei id von zwei aufrufen gleich sind
+                var id = Number(Math.random() * 999999999).toFixed(0);
+                var s = "<div class =\"Artikel\"> \
+                            <label>\
+                                PZN:<input type = \"text\" name = \"pzn_" + id + "\">\
+                            </label>\
+                            <label>\
+                                Name:<input type = \"text\" name = \"name_" + id + "\">\
+                            </label>\
+                            <label>\
+                                Beschreibung:<input type = \"text\" name = \"beschreibung_" + id + "\">\
+                            </label>\
+                            <label>\
+                                Preis:<input type = \"number\" name = \"price_" + id + "\">\
+                            </label>\
+                        </div>";
+
+                document.getElementById("ArtikelSet").innerHTML =
+                        document.getElementById("ArtikelSet").innerHTML + s;
+
+
+            }
+            function addWebsite() {
+                //Hier ist eine schwachstelle für angriffe! Wenn zwei id von zwei aufrufen gleich sind
+
+                document.getElementById("URL").innerHTML =
+                        document.getElementById("URL").innerHTML +
+                        "URL: <input type = \"url\" name = \"url\">";
+
+
+            }
+        </script>
+
+    </head>
+    <body>
+
+        <form action = "HTTP_API" method = "post">
+            <div id="ArtikelSet" class ="Artikel_Set" onload="addArtikel()">
+                <div class ="Artikel"> 
+                    <label>
+                        PZN:<input type = "text" name = "pzn_1">
+                    </label>
+                    <label>
+                        Name:<input type = "text" name = "name_1">
+                    </label>
+                    <label>
+                        Beschreibung:<input type = "text" name = "description_1">
+                    </label>
+                    <label>
+                        Preis:<input type = "number" name = "price_1">
+                    </label>
+                </div>
+            </div>
+
+            <div class="RequestParam">
+                <div id =URL>
+                    <label>URL</label> 
+                    <select name="url">
+                        <option value="https://www.docmorris.de">Docmorris</option>
+                    </select>
+                </div>
+                Date:<input type = "date" name = "date_1">
+                <!--vorhandene Crawler als auswahliste Generisch??-->
+                <fieldset>
+                    <ul>
+                        <li> 
+                            <label>
+                                <!--Die genauen Namen von Klassen sollen nicht im HTML stehen-> Mapping einbauen--> 
+                                <input type="checkbox" name="Crawler" value="Single_Crawler" checked>
+                                SINGEL CRAWLER
+                            </label>
+                        </li>
+                        <li> 
+                            <label>
+                                <input type="checkbox" name="Crawler" value="PATTERN CRAWLER">
+                                PATTERN CRAWLER
+                            </label>
+                        </li>
+                        <li>  
+                            <label>
+                                <input type="checkbox" name="Crawler" value="machinLearning">
+                                machinLearning
+                            </label>
+                        </li>
+                    </ul> 
+                </fieldset> 
+            </div>
+
+            <input type = "submit" value = "Submit" />
+        </form>
+        <button id="somebutton" onclick="addWebsite()">ADD Website</button>
+        <button id="somebutton" onclick="addArtikel()">ADD Artikel</button>
+
+    </body>
+</html>
+
+<!--
+<form method="post" action="uploadServlet" enctype="multipart/form-data">
+ 
+        Select file to upload: <input type="file" name="uploadFile" />
+ 
+        <input type="submit" value="Upload" />
+</form>
+-->
+<!--<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>SO question 4112686</title>
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script>
+            $(document).on("click", "#somebutton", function() { // When HTML DOM "click" event is invoked on element with ID "somebutton", execute the following function...
+                $.get("someservlet", function(responseText) {   // Execute Ajax GET request on URL of "someservlet" and execute the following function with Ajax response text...
+                    $("#somediv").text(responseText);           // Locate HTML DOM element with ID "somediv" and set its text content with the response text.
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <button id="somebutton">press here</button>
+        <div id="somediv"></div>
+    </body>
+</html>
+-->
