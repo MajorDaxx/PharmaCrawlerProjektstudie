@@ -8,7 +8,6 @@ package Crawler.SingleCrawler;
 import ComClass.Product;
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -78,12 +77,10 @@ public class Crawler_DOC extends Single_Crawler {
                 answer.setField(fieldname.toLowerCase(),
                         child.child(1).text());
 
-//                answer.setField(child.child(0).text().replaceAll(":", "").toLowerCase(),
-//                        child.child(1).text());
             }
 
             answer.setField("price", Double.parseDouble(doc.select("td.price").first().text().replace("€", "").replace(",", ".")));
-            
+            downloadPicture("foto1", refArtikel, url);
             
             return answer;
 

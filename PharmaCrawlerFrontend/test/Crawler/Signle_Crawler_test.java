@@ -20,6 +20,7 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import javafx.scene.image.Image;
+import org.jsoup.Jsoup;
 
 /**
  *
@@ -59,21 +60,21 @@ public class Signle_Crawler_test {
 //            ScaledLevenstein lev = new ScaledLevenstein();
 //            
 //            System.out.println(lev.score("Gripostadt C Hartkapseln", "Gripostadt Hartkapseln"));
-        URL url = new URL("https://www.docmorris.de/images/produkte/large/08436903/HeuschnupfenmittelDHUTabletten.jpg");
-        InputStream in = new BufferedInputStream(url.openStream());
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        byte[] buf = new byte[1024];
-        int n = 0;
-        while (-1 != (n = in.read(buf))) {
-            out.write(buf, 0, n);
-        }
-        out.close();
-        in.close();
-        byte[] response = out.toByteArray();
-
-        FileOutputStream fos = new FileOutputStream("test.jpg");
-        fos.write(response);
-        fos.close();
+//        URL url = new URL("https://www.docmorris.de/images/produkte/large/08436903/HeuschnupfenmittelDHUTabletten.jpg");
+//        InputStream in = new BufferedInputStream(url.openStream());
+//        ByteArrayOutputStream out = new ByteArrayOutputStream();
+//        byte[] buf = new byte[1024];
+//        int n = 0;
+//        while (-1 != (n = in.read(buf))) {
+//            out.write(buf, 0, n);
+//        }
+//        out.close();
+//        in.close();
+//        byte[] response = out.toByteArray();
+//
+//        FileOutputStream fos = new FileOutputStream("test.jpg");
+//        fos.write(response);
+//        fos.close();
 
     }
 }

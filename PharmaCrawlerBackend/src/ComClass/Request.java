@@ -22,7 +22,7 @@ public class Request extends Thread {
     //Die eindeutige ID dieses Request aus der DB
     int id;
 
-    //Datum des Datensatz
+    //Datum des Datensatz TODO:entfernen!!!!
     private String date;
 
     /**

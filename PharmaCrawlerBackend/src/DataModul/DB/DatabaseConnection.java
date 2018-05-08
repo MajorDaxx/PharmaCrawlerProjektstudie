@@ -47,7 +47,7 @@ public class DatabaseConnection {
         try {
             Driver d = new com.mysql.jdbc.Driver();
             DriverManager.registerDriver(d);
-
+            //Use Poperties class and File to ban config from code
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/webcrawler?verifyServerCertificate=false&useSSL=true", "admin", "admin");
         } catch (SQLException ex) {
             LOG.log(Level.SEVERE, "Keine Datenbankberbindung Möglich", ex);
@@ -55,21 +55,19 @@ public class DatabaseConnection {
 
     }
 
-    public void executeInsert(int run_ID,String artikel_ID,Product a) throws SQLException {
+    public void executeInsert(int run_ID, String artikel_ID, Product a) throws SQLException {
 
-        String sql = "Insert Into webcrawler.product (Run_ID,Artikel_ID,Attribute,Value) Values("+run_ID+",'"+artikel_ID+"',?,?)";
-    
-        
-        
+        String sql = "Insert Into webcrawler.product (Run_ID,Artikel_ID,Attribute,Value) Values(" + run_ID + ",'" + artikel_ID + "',?,?)";
+
         for (Comparison_attr comparison_attr : a.getAttr()) {
-            if(comparison_attr.getVal2()!=null){
+            if (comparison_attr.getVal2() != null) {
                 PreparedStatement prepStm = con.prepareStatement(sql);
                 prepStm.setString(1, comparison_attr.getName());
                 prepStm.setObject(2, comparison_attr.getVal2());
                 prepStm.execute();
             }
         }
-    
+
     }
 
     public ResultSet selectPznExits(Request req) throws SQLException {
@@ -118,7 +116,6 @@ public class DatabaseConnection {
      */
     public void checkRequestSet(RequestSet reqSet) {
         try {
-            
 
             String prpSQLInsert
                     = "Insert Into webcrawler.request (Date,Crawler,Host) Values (?,?,?);";
@@ -195,7 +192,7 @@ public class DatabaseConnection {
         ResultSet resSet = prepStm_getArtikel.executeQuery();
 
         while (resSet.next()) {
-            
+
             //BLOB wird als Object eingelesen
             answer.setField(resSet.getString("Attribute"), resSet.getBlob("Value"));
         }

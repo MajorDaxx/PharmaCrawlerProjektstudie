@@ -6,7 +6,8 @@
 package ComClass.SpezifiedAttr;
 
 import ComClass.Rating;
-import com.sun.istack.internal.logging.Logger;
+import java.util.logging.Logger;
+
 
 /**
  *
@@ -14,7 +15,7 @@ import com.sun.istack.internal.logging.Logger;
  */
 public class Comparison_attr {
 
-    static final Logger LOG = Logger.getLogger(Comparison_attr.class);
+    static final Logger LOG = Logger.getLogger(Comparison_attr.class.getName());
 
     protected String name;
     protected Object val1;

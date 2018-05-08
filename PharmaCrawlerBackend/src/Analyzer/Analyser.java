@@ -11,10 +11,9 @@ import ComClass.Rating;
 import ComClass.SpezifiedAttr.WrapperString;
 import ComClass.SpezifiedAttr.Wrapper_Price;
 import com.wcohen.ss.ScaledLevenstein;
-import com.wcohen.ss.api.StringWrapper;
 import java.util.HashSet;
 import java.util.Set;
-import jdk.management.resource.internal.WrapInstrumentation;
+
 
 /**
  *
